@@ -44,13 +44,15 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     records = [];
-    getExternalStorageDirectory().then((value) {
+    getApplicationDocumentsDirectory()!.then((value) {
+      print('value');
+      print(value);
       appDir = value!;
       Directory appDirec = Directory("${appDir!.path}/Audiorecords/");
       print(Directory('path'));
       appDir = appDirec;
 
-      appDir!.list().listen((onData) {
+      appDir!.list()!.listen((onData) {
         records!.add(onData.path);
       }).onDone(() {
         records = records!.reversed.toList();
