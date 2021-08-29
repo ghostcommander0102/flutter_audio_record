@@ -81,11 +81,11 @@ class _RecorderState extends State<Recorder> {
                 ? RaisedButton(
                     color: Colors.orange,
                     onPressed: () async {
-                      Directory? appDir = await getApplicationDocumentsDirectory();
+                      Directory? appDir = await getApplicationSupportDirectory();
                       Directory appDirec =
                           Directory("${appDir!.path}/Audiorecords/");
                       print('length');
-                      appDirec!.list()!.length.then((value) async {
+                      appDirec.list().length.then((value) async {
                         print(value);
                         if (value > 9) {
                           await showDialog(
@@ -292,7 +292,7 @@ class _RecorderState extends State<Recorder> {
   }
 
   _initial() async {
-    Directory? appDir = await getApplicationDocumentsDirectory();
+    Directory? appDir = await getApplicationSupportDirectory();
     String jrecord = 'Audiorecords';
     String dato = "${DateTime.now().millisecondsSinceEpoch?.toString()}.wav";
     dato = recordname + '#' + dato;

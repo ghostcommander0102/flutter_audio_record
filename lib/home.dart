@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     records = [];
-    getApplicationDocumentsDirectory()!.then((value) {
+    getApplicationSupportDirectory().then((value) {
       print('value');
       print(value);
       appDir = value!;
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
       print(Directory('path'));
       appDir = appDirec;
 
-      appDir!.list()!.listen((onData) {
+      appDir!.list().listen((onData) {
         records!.add(onData.path);
       }).onDone(() {
         records = records!.reversed.toList();
